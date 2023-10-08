@@ -29,9 +29,9 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    testImplementation 'org.spockframework:spock-core:2.0-M3-groovy-3.0'
+    testImplementation 'org.spockframework:spock-core:2.4-M1-groovy-4.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.spockframework:spock-spring:2.0-M3-groovy-3.0'
+    testImplementation 'org.spockframework:spock-spring:2.4-M1-groovy-4.0'
 }
 
 tasks.named('test') {
