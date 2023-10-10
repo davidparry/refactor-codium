@@ -2,7 +2,6 @@ package com.davidparry.refactor;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Optional;
 
 interface ProfileRepo extends JpaRepository<UserProfile, Long> {
     UserProfile findUserProfileById(Long id);
@@ -59,14 +57,7 @@ public class Application {
 
     @GetMapping("/users")
     public ResponseEntity<List<UserProfile>> profiles() {
-        String sql = "SELECT id, name FROM USER_PROFILE";
-        List<UserProfile> users = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
-            UserProfile u = new UserProfile();
-            u.setId(resultSet.getLong("id"));
-            u.setName(resultSet.getString("name"));
-            return u;
-        });
-        return ResponseEntity.ok(users);
+        return ResponseEntity.ok(profileRepo.findAll());
     }
 
 
